@@ -232,7 +232,9 @@ class ParserEpicPDI(MatchingParser):
 
         print(child_archives["process"].data.steps[0].environment.bep.time)
         logger.info(f"Process value: {child_archives["process"].data.steps[0].environment.bep.time}")
-        # shutters status
+        logger.info(f"Process value HDF5 : {HDF5Reference.read_dataset(archive, child_archives['process'].data.steps[0].environment.bep.time)}")
+
+                # shutters status
         if shutters is not None:
             for shutter_key, shutter_value in shutters.items():
                 if isinstance(shutter_value, pd.Series) and (shutter_value == 0).all():
